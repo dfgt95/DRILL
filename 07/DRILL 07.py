@@ -1,7 +1,7 @@
 from random import randint
 from pico2d import *
 
-KPU_WIDTH, KPU_HEIGHT = 1280, 1024
+KPU_WIDTH, KPU_HEIGHT = 800, 600
 
 def handle_events():
     global running
@@ -14,7 +14,7 @@ def handle_events():
             if event.key == SDLK_ESCAPE:
                 running = False
 
-open_canvas()
+open_canvas(KPU_WIDTH, KPU_HEIGHT)
 kpu_ground = load_image('KPU_GROUND.png')
 character = load_image('animation_sheet.png')
 hand = load_image('hand_arrow.png')
@@ -35,7 +35,6 @@ while running:
         hand_x, hand_y = randint(20, 780), randint(20, 580)
     else:
         for i in range(0, 100 + 1, 2):
-            
             kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
             hand.draw(hand_x, hand_y)
             t = i / 100
