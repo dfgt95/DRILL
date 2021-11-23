@@ -124,7 +124,7 @@ next_state_table = {
 class Boy:
 
     def __init__(self):
-        self.x, self.y = 1600 // 2, 90
+        self.x, self.y = 1200 // 2, 90
         # Boy is only once created, so instance image loading is fine
         self.image = load_image('animation_sheet.png')
         self.font = load_font('ENCR10B.TTF', 16)
@@ -136,8 +136,8 @@ class Boy:
         self.cur_state.enter(self, None)
 
     def get_bb(self):
-        # fill here
-        return 0, 0, 0, 0
+        # left_x, low_y, right_x, high_y
+        return self.x - 30, self.y - 40, self.x + 30, self.y + 40
 
 
     def fire_ball(self):
@@ -160,6 +160,7 @@ class Boy:
         self.cur_state.draw(self)
         self.font.draw(self.x - 60, self.y + 50, '(Time: %3.2f)' % get_time(), (255, 255, 0))
         #fill here
+        draw_rectangle(*self.get_bb())
 
 
     def handle_event(self, event):
